@@ -43,14 +43,13 @@ print "   " * firstday.wday
 
 
 (firstday..lastday).each do |date|
-  # binding.break # 例: ここに記入
   if    date.sunday?
     print date.day
-  elsif date.day == 1 #1日だけ、半角スペースを入れる。
+  elsif date.day == 1
     print date.day.to_s.rjust(2)
-  elsif date.day <10  #10日未満は半角スペースを2つ入れる。
+  elsif date.day <10
     print date.day.to_s.rjust(3)
-  else                    #10日以上は半角スペースを1つ入れる。
+  else
     print date.day.to_s.rjust(3)
   end  
 
