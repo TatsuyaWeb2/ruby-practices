@@ -1,7 +1,5 @@
 require 'date'
 require 'optparse'
-require 'debug' # 例: ここで読み込んでおく
-
 
 #今年の西暦を取得
 today = Date.today
@@ -36,10 +34,6 @@ puts week.join(" ")
 
 # 初めの曜日まで空白を入れる。
 print "   " * firstday.wday
-
-# n = firstday.day + 1
-# n = n.to_s
-# print n.rjust(5, " ")
 
 
 (firstday..lastday).each do |date|
