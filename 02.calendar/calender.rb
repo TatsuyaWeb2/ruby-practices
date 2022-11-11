@@ -1,5 +1,6 @@
 require 'date'
 require 'optparse'
+require 'debug'
 
 #今年の西暦を取得
 today = Date.today
@@ -37,22 +38,13 @@ print "   " * firstday.wday
 
 
 (firstday..lastday).each do |date|
-  if    date.sunday?
-    print date.day
-  elsif date.day == 1
-    print date.day.to_s.rjust(2)
-  elsif date.day <10
-    print date.day.to_s.rjust(3)
-  else
-    print date.day.to_s.rjust(3)
-  end  
+  day = date.day.to_s.rjust(2)
 
   #土曜日の場合には改行を入れる。
   if date.saturday?
-    print "\n"
-    if date.day + 1 <10 #次の日付が、9以下なら、空白スペースを入れる
-      print " "
-    end
+    print day + "\n"
+  else
+    print day + " "
   end
 end
 
