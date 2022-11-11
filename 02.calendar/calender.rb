@@ -6,16 +6,16 @@ require 'debug'
 today = Date.today
 target_date = {year: today.year, month: today.month, day: today.day}
 
-#ユーザーからの入力を取得しtmp_dateに入力
-tmp_date    = ARGV.getopts('', 'year:', 'month:')
+#ユーザーからの入力を取得しoptionsに入力
+options    = ARGV.getopts('', 'year:', 'month:')
 
 #もし、ユーザーからの入力があった際にはtarget_dateを更新
-if tmp_date['year']
-  target_date[:year]   = tmp_date['year'].to_i
+if options['year']
+  target_date[:year]   = options['year'].to_i
 end
 
-if tmp_date['month'] 
-  target_date[:month]  = tmp_date['month'].to_i
+if options['month'] 
+  target_date[:month]  = options['month'].to_i
 end
 
 #月初と、月末日を取得
