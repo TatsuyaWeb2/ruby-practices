@@ -1,6 +1,5 @@
 require 'date'
 require 'optparse'
-require 'debug'
 
 #今年の西暦を取得
 today = Date.today
