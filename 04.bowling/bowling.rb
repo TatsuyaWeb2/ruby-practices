@@ -1,5 +1,5 @@
 # frozen_string_literal: true
-require 'debug'
+
 throw = ARGV[0].split(',')
 current_num = 0
 total_score = []
