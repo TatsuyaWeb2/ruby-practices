@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# 初めに全てを数値として定義したいため、ストライクの場合は「X」を「11」として扱う。
 throw_score = ARGV[0].split(',').map do |x|
   if x == 'X'
     10
