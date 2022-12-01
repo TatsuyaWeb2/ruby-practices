@@ -9,7 +9,7 @@ throw_score = ARGV[0].split(',').map do |x|
 end
 
 def ten_frame(*ten_throw)
-  ten_throw.map(&:to_i).sum
+  ten_throw.compact.sum
 end
 
 total_score = []
