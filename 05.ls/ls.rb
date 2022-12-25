@@ -13,38 +13,38 @@ def output(file_names, column, max)
     end
     print "\n"
   end
-  print "\n"
 end
 
-def no_name(target_path)
-  truth_paths = []
+existing_file    = []
+existing_folders = []
+
+if target_path.empty?
+  file_names = Dir.glob('*').sort
+  max = file_names.max_by(&:length).length + 3
+  output(file_names, COLUMN, max)
+
+else
   target_path.each do |path|
-    if FileTest.exist?(path)
-      truth_paths.push(path)
+    if FileTest.file?(path)
+      existing_file.push(path)
+    elsif FileTest.directory?(path)
+      existing_folders.push(path)
     else
       puts("ls: #{path}: No such file or directory")
     end
   end
-  truth_paths
 end
 
-if target_path.empty?
-  file_names = Dir.glob('*').sort
-  max = file_names.max_by(&:length)
-  output(file_names, COLUMN, max)
-else
-  truth_paths = no_name(target_path)
+if existing_file.length >= 1
+  max = existing_file.max_by(&:length).length + 3
+  output(existing_file, COLUMN, max)
+  print("\n")
 end
 
-truth_paths.each do |path|
-  if target_path.length > 1
-    if FileTest.directory?(path)
-      puts "#{path}:"
-    elsif FileTest.file?(path)
-      put path
-    end
-  end
-  file_names = Dir.glob("#{path}/*").sort.map { |x| x.sub("#{path}/", '') }
-  max = file_names.max_by(&:length).length + 3
-  output(file_names, COLUMN, max)
+existing_folders.each do |path|
+  puts "#{path}:" if existing_folders.length > 1
+  existing_folders = Dir.glob("#{path}/*").sort.map { |x| x.sub("#{path}/", '') }
+  max = existing_folders.max_by(&:length).length + 3
+  output(existing_folders, COLUMN, max)
+  print("\n")
 end
